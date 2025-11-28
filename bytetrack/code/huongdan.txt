@@ -1,0 +1,36 @@
+Theo Quy chuẩn kỹ thuật quốc gia QCVN 41:2019/BGTVT về Báo hiệu đường bộ của Việt Nam, kích thước vạch kẻ đường (Vạch đứt nét phân chia làn xe cùng chiều - Vạch 2.1) được quy định cụ thể như sau.
+
+
+1. Đường Đô thị & Đường thường (Tốc độ < 60 km/h)
+
+- Đây là loại vạch bạn thường thấy trong phố hoặc đường tỉnh lộ bình thường.
+- Chiều dài vạch sơn (L1): 1 mét đến 3 mét.
+- Khoảng cách giữa 2 vạch (L2): 3 mét đến 9 mét.
+- Tỷ lệ phổ biến nhất: 1 : 3 (Vạch 1 phần, khoảng trống 3 phần).
+	+ Cấu hình thường gặp: Vạch dài 1.5m, khoảng trống 4.5m -> Tổng 1 chu kỳ là 6m.
+	+ Hoặc ngắn hơn: Vạch dài 1m, khoảng trống 3m -> Tổng 1 chu kỳ là 4m.
+
+2. Đường Cao tốc & Quốc lộ (Tốc độ >= 60 km/h)
+
+- Nếu video của bạn quay ở cao tốc (như Hà Nội - Hải Phòng, Long Thành - Dầu Giây...) hoặc Quốc lộ lớn, vạch sẽ dài hơn nhiều để dễ nhìn ở tốc độ cao.
+	+ Chiều dài vạch sơn (L1): 3 mét đến 6 mét.
+	+ Khoảng cách giữa 2 vạch (L2): 6 mét đến 12 mét.
+	+ Cấu hình phổ biến nhất ở Việt Nam:
+		+ Vạch dài 3 mét, khoảng trống 6 mét -> Tổng 1 chu kỳ là 9 mét.
+		+ Hoặc Vạch dài 3 mét, khoảng trống 9 mét -> Tổng 1 chu kỳ là 12 mét.
+
+3. Cách tính TARGET_HEIGHT cho code của bạn
+
+Để tránh sai số, thay vì đo chiều dài cả đoạn đường (khó chính xác), bạn hãy đếm số lượng "Chu kỳ vạch" nằm trong khung đỏ SOURCE của bạn.
+Công thức:
+
+
+	1 Chu kỳ = Độ dài vạch trắng + Độ dài khoảng trống
+Ví dụ áp dụng:
+	1. Nhìn vào vùng SOURCE (khung đỏ) trên video car.mp4.
+	2. Đếm xem trong khung đó chứa được bao nhiêu chu kỳ (tính từ đầu vạch trắng này đến đầu vạch trắng kia).
+	3. Giả sử video là đường cao tốc và bạn đếm được 4 chu kỳ.
+		+ Lấy chuẩn phổ biến: 1 chu kỳ = 9 mét (3m vạch + 6m trống).
+		+ TARGET_HEIGHT = 4 x 9 = 36 mét.
+
+KHÓ QUÁ ĐO BẰNG XE :)))
